@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'dashboard',
+    loadChildren: () => import('@nx-angular/feature-dashboard').then(m => m.FeatureDashboardModule)
+  },
+  {
     path: '',
     loadChildren: () => import('@nx-angular/feature-login').then(m => m.FeatureLoginModule)
   },

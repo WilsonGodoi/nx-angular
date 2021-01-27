@@ -18,6 +18,7 @@
   "projects": {
     "car-sales": { "tags": [] },
     "car-sales-e2e": { "tags": [], "implicitDependencies": ["car-sales"] },
-    "feature-login": { "tags": [] }
+    "feature-login": { "tags": [] },
+    "feature-dashboard": { "tags": [] }
   }
 }

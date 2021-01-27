@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-angular/feature-login": ["libs/feature-login/src/index.ts"]
+      "@nx-angular/feature-login": ["libs/feature-login/src/index.ts"],
+      "@nx-angular/feature-dashboard": ["libs/feature-dashboard/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
