@@ -20,7 +20,12 @@
               "apps/car-sales/src/favicon.ico",
               "apps/car-sales/src/assets"
             ],
-            "styles": ["apps/car-sales/src/styles.scss"],
+            "styles": [
+              "apps/car-sales/src/styles.scss",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -160,6 +165,31 @@
           "outputs": ["coverage/libs/feature-dashboard"],
           "options": {
             "jestConfig": "libs/feature-dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui-primeng": {
+      "projectType": "library",
+      "root": "libs/ui-primeng",
+      "sourceRoot": "libs/ui-primeng/src",
+      "prefix": "nx-angular",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ui-primeng/src/**/*.ts",
+              "libs/ui-primeng/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-primeng"],
+          "options": {
+            "jestConfig": "libs/ui-primeng/jest.config.js",
             "passWithNoTests": true
           }
         }
