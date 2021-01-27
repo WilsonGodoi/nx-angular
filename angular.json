@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "car-sales": {
+      "projectType": "application",
+      "root": "apps/car-sales",
+      "sourceRoot": "apps/car-sales/src",
+      "prefix": "nx-angular",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/car-sales",
+            "index": "apps/car-sales/src/index.html",
+            "main": "apps/car-sales/src/main.ts",
+            "polyfills": "apps/car-sales/src/polyfills.ts",
+            "tsConfig": "apps/car-sales/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/car-sales/src/favicon.ico",
+              "apps/car-sales/src/assets"
+            ],
+            "styles": ["apps/car-sales/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/car-sales/src/environments/environment.ts",
+                  "with": "apps/car-sales/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "car-sales:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "car-sales:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "car-sales:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/car-sales/src/**/*.ts",
+              "apps/car-sales/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/car-sales"],
+          "options": {
+            "jestConfig": "apps/car-sales/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "car-sales-e2e": {
+      "root": "apps/car-sales-e2e",
+      "sourceRoot": "apps/car-sales-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/car-sales-e2e/cypress.json",
+            "tsConfig": "apps/car-sales-e2e/tsconfig.e2e.json",
+            "devServerTarget": "car-sales:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "car-sales:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/car-sales-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "car-sales"
+}
