@@ -20,6 +20,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ToolbarModule } from 'primeng/toolbar';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [],
@@ -45,6 +46,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     FieldsetModule,
     InputMaskModule,
     MessageModule,
+    ChartModule,
   ],
   exports: [
     CardModule,
@@ -67,6 +69,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     FieldsetModule,
     InputMaskModule,
     MessageModule,
+    ChartModule,
   ],
   providers: [DialogService],
 })
