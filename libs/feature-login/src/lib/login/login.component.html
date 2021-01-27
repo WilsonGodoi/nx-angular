@@ -1,1 +1,65 @@
-<p>login works!</p>
+<div class="p-grid p-justify-center p-nogutter card">
+  <div class="p-col-10 p-sm-6 p-md-4" [@rotatedState]="state">
+    <p-card>
+      <form (ngSubmit)="doLogin($event)" [formGroup]="userform">
+        <div class="p-grid">
+          <div class="p-col-12 text-center">
+            <i class="fas fa-car fa-4x" style="color: #007ad9"></i>
+            <h2>Car Sales</h2>
+          </div>
+          <div class="p-col-12">
+            <label>Usuário:</label>
+            <input
+              formControlName="login"
+              class="p-col-12"
+              type="text"
+              pInputText
+            />
+            <p-message
+              severity="error"
+              text="Nome obrigatório!"
+              *ngIf="
+                !userform.controls['login'].valid &&
+                userform.controls['login'].dirty
+              "
+            ></p-message>
+          </div>
+          <div class="p-col-12">
+            <label>Senha:</label>
+            <input
+              formControlName="password"
+              class="p-col-12"
+              type="password"
+              pInputText
+            />
+            <p-message
+              severity="error"
+              text="Senha obrigatória!"
+              *ngIf="
+                !userform.controls['password'].valid &&
+                userform.controls['password'].dirty
+              "
+            ></p-message>
+          </div>
+          <div class="p-col-12 text-center">
+            <button
+              *ngIf="!loading"
+              class="ui-button-rounded p-col-12"
+              icon="fas fa-sign-in-alt"
+              pButton
+              type="submit"
+              label="Entrar"
+              iconPos="right"
+            ></button>
+            <p-progressSpinner
+              *ngIf="loading"
+              strokeWidth="4"
+              [style]="{ width: '30px', height: '30px' }"
+            >
+            </p-progressSpinner>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

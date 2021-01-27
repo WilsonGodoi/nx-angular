@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+$background-color: #252525 !important;
+$font-color: #fff !important;
+
+body {
+  color: $font-color;
+  margin: 0;
+  // background-image: url('./assets/1169.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0.95;
+  background-color: $background-color;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.ui-card,
+.ui-panel-titlebar,
+.ui-panel-content,
+.ui-dataview-content,
+.ui-dataview-header {
+  background-color: $background-color;
+  color: $font-color;
+}
+.ui-message-error {
+  width: 100%;
+}
