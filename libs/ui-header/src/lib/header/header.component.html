@@ -1,20 +1,18 @@
-<!-- <div
-  class="app-header text-center"
-  *ngIf="authService.isAuthenticated() && router.url !== '/'"
-> -->
-<i style="float: left" class="fas fa-bars" (click)="openMenu()"></i>
-<span>
-  {{ title }}
-</span>
-<div class="circle">
-  <!-- <img
+<div class="app-header text-center">
+  <!-- *ngIf="authService.isAuthenticated() && router.url !== '/'" -->
+  <i style="float: left" class="fas fa-bars" (click)="openMenu()"></i>
+  <span>
+    {{ title }}
+  </span>
+  <div class="circle">
+    <!-- <img
     style="float: right"
     [src]="userService?.getSrcPicture()"
     alt="avatar"
     (click)="overlayPanel.show($event)"
   /> -->
+  </div>
 </div>
-<!-- </div> -->
 
 <p-overlayPanel #overlayPanel>
   <ng-template pTemplate>
