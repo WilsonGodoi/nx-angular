@@ -21,6 +21,7 @@
     "feature-login": { "tags": [] },
     "feature-dashboard": { "tags": [] },
     "ui-primeng": { "tags": [] },
-    "ui-header": { "tags": [] }
+    "ui-header": { "tags": [] },
+    "data-access-login": { "tags": [] }
   }
 }

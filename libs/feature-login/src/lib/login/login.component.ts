@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -6,10 +5,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { LoginService } from '@nx-angular/data-access-login';
 
 @Component({
   selector: 'nx-angular-login',
@@ -30,7 +29,11 @@ export class LoginComponent implements OnInit {
 
   public userform: FormGroup;
 
-  constructor(private router: Router, private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.userform = this.fb.group({
@@ -45,12 +48,18 @@ export class LoginComponent implements OnInit {
       e.preventDefault();
       this.loading = true;
 
-      of(true)
-        .pipe(delay(1000))
+      this.loginService
+        .doLogin(this.userform.value)
+        .pipe
+        // takeUntil(this.unsubscribe)
+        ()
         .subscribe(
           (success) => {
+            // this.authService.loginResponse = success;
+            // this.userService.getCurrent();
             this.rotate();
             setTimeout(() => {
+              // this.router.navigate([PathTypes.DASHBOARD]);
               this.router.navigate(['dashboard']);
             }, 800);
           },
