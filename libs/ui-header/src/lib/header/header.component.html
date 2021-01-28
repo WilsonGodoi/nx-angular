@@ -1,1 +1,69 @@
-<p>header works!</p>
+<!-- <div
+  class="app-header text-center"
+  *ngIf="authService.isAuthenticated() && router.url !== '/'"
+> -->
+<i style="float: left" class="fas fa-bars" (click)="openMenu()"></i>
+<span>
+  {{ title }}
+</span>
+<div class="circle">
+  <!-- <img
+    style="float: right"
+    [src]="userService?.getSrcPicture()"
+    alt="avatar"
+    (click)="overlayPanel.show($event)"
+  /> -->
+</div>
+<!-- </div> -->
+
+<p-overlayPanel #overlayPanel>
+  <ng-template pTemplate>
+    <div class="p-grid">
+      <div class="p-col-12 circle-overlay text-center">
+        <img
+          (click)="uploadPicture()"
+          [src]="userService?.getSrcPicture()"
+          alt="avatar"
+        />
+        <p-fileUpload
+          #fileUpload
+          hidden
+          id="fileUpload"
+          mode="basic"
+          name="image-upload"
+          accept="image/*"
+          (onSelect)="onUpload($event)"
+        ></p-fileUpload>
+      </div>
+      <div class="p-col-12 text-center">
+        <h3>{{ userService?.currentUser?.name }}</h3>
+      </div>
+      <div class="p-col-12">
+        <div class="p-grid">
+          <div class="p-col-6 text-center">
+            <span style="cursor: pointer" (click)="goToChangePassword()">
+              <i class="fas fa-key"></i>
+              &nbsp; Senha</span
+            >
+          </div>
+          <div class="p-col-6 text-center" (click)="doLogout()">
+            <span style="cursor: pointer">
+              <i class="fas fa-sign-out-alt"></i>
+              &nbsp; Logout</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-overlayPanel>
+
+<p-sidebar
+  [(visible)]="displayMenu"
+  [style]="{ width: '15em' }"
+  [showCloseIcon]="false"
+  [blockScroll]="true"
+  [style]="{ overflow: 'auto' }"
+>
+  <p-menu [model]="items"></p-menu>
+</p-sidebar>

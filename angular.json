@@ -10,6 +10,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["chart.js"],
             "outputPath": "dist/apps/car-sales",
             "index": "apps/car-sales/src/index.html",
             "main": "apps/car-sales/src/main.ts",
