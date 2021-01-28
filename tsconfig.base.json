@@ -17,7 +17,8 @@
     "paths": {
       "@nx-angular/feature-login": ["libs/feature-login/src/index.ts"],
       "@nx-angular/feature-dashboard": ["libs/feature-dashboard/src/index.ts"],
-      "@nx-angular/ui-primeng": ["libs/ui-primeng/src/index.ts"]
+      "@nx-angular/ui-primeng": ["libs/ui-primeng/src/index.ts"],
+      "@nx-angular/ui-header": ["libs/ui-header/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
