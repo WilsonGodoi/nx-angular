@@ -173,31 +173,6 @@
         }
       }
     },
-    "ui-primeng": {
-      "projectType": "library",
-      "root": "libs/ui-primeng",
-      "sourceRoot": "libs/ui-primeng/src",
-      "prefix": "nx-angular",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/ui-primeng/src/**/*.ts",
-              "libs/ui-primeng/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ui-primeng"],
-          "options": {
-            "jestConfig": "libs/ui-primeng/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "ui-header": {
       "projectType": "library",
       "root": "libs/ui-header",

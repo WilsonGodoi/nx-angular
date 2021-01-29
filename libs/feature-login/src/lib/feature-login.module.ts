@@ -1,16 +1,28 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { FeatureLoginRoutingModule } from './feature-login-routing.module';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UiPrimengModule } from '@nx-angular/ui-primeng';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessageModule } from 'primeng/message';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { FeatureLoginRoutingModule } from './feature-login-routing.module';
+import { LoginComponent } from './login/login.component';
+
+const PrimengModules = [
+  CardModule,
+  ButtonModule,
+  InputTextModule,
+  MessageModule,
+  ProgressSpinnerModule,
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FeatureLoginRoutingModule,
     ReactiveFormsModule,
-    UiPrimengModule,
+    ...PrimengModules,
   ],
   declarations: [LoginComponent],
 })

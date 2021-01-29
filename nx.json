@@ -20,7 +20,6 @@
     "car-sales-e2e": { "tags": [], "implicitDependencies": ["car-sales"] },
     "feature-login": { "tags": [] },
     "feature-dashboard": { "tags": [] },
-    "ui-primeng": { "tags": [] },
     "ui-header": { "tags": [] },
     "data-access-login": { "tags": [] }
   }
