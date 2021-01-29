@@ -222,6 +222,56 @@
           }
         }
       }
+    },
+    "util-interface": {
+      "projectType": "library",
+      "root": "libs/util-interface",
+      "sourceRoot": "libs/util-interface/src",
+      "prefix": "nx-angular",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/util-interface/src/**/*.ts",
+              "libs/util-interface/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/util-interface"],
+          "options": {
+            "jestConfig": "libs/util-interface/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "data-storage-login": {
+      "projectType": "library",
+      "root": "libs/data-storage-login",
+      "sourceRoot": "libs/data-storage-login/src",
+      "prefix": "nx-angular",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/data-storage-login/src/**/*.ts",
+              "libs/data-storage-login/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/data-storage-login"],
+          "options": {
+            "jestConfig": "libs/data-storage-login/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

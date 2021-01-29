@@ -18,7 +18,9 @@
       "@nx-angular/feature-login": ["libs/feature-login/src/index.ts"],
       "@nx-angular/feature-dashboard": ["libs/feature-dashboard/src/index.ts"],
       "@nx-angular/ui-header": ["libs/ui-header/src/index.ts"],
-      "@nx-angular/data-access-login": ["libs/data-access-login/src/index.ts"]
+      "@nx-angular/data-access-login": ["libs/data-access-login/src/index.ts"],
+      "@nx-angular/util-interface": ["libs/util-interface/src/index.ts"],
+      "@nx-angular/data-storage-login": ["libs/data-storage-login/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

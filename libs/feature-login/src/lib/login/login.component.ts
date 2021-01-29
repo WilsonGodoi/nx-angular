@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '@nx-angular/data-access-login';
+import {StorageLoginService} from '@nx-angular/data-storage-login';
+import { LoginResponse } from '@nx-angular/util-interface';
 
 @Component({
   selector: 'nx-angular-login',
@@ -32,7 +34,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private storageLoginService: StorageLoginService
   ) {}
 
   ngOnInit(): void {
@@ -54,8 +57,8 @@ export class LoginComponent implements OnInit {
         // takeUntil(this.unsubscribe)
         ()
         .subscribe(
-          (success) => {
-            // this.authService.loginResponse = success;
+          (loginResponse: LoginResponse) => {
+            this.storageLoginService.loginResponse = loginResponse;
             // this.userService.getCurrent();
             this.rotate();
             setTimeout(() => {

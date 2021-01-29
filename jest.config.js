@@ -5,5 +5,7 @@ module.exports = {
     '<rootDir>/libs/feature-dashboard',
     '<rootDir>/libs/ui-header',
     '<rootDir>/libs/data-access-login',
+    '<rootDir>/libs/util-interface',
+    '<rootDir>/libs/data-storage-login',
   ],
 };
