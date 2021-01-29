@@ -9,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '@nx-angular/data-access-login';
-import {StorageLoginService} from '@nx-angular/data-storage-login';
+import { StorageLoginService } from '@nx-angular/data-storage-login';
 import { LoginResponse } from '@nx-angular/util-interface';
+import { takeUntil } from 'rxjs/operators';
+import { NgUnsubscribe } from '@nx-angular/util-class';
 
 @Component({
   selector: 'nx-angular-login',
@@ -25,7 +27,7 @@ import { LoginResponse } from '@nx-angular/util-interface';
     ]),
   ],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends NgUnsubscribe implements OnInit {
   public state: string;
   public loading: boolean;
 
@@ -36,7 +38,9 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private storageLoginService: StorageLoginService
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.userform = this.fb.group({
@@ -53,9 +57,7 @@ export class LoginComponent implements OnInit {
 
       this.loginService
         .doLogin(this.userform.value)
-        .pipe
-        // takeUntil(this.unsubscribe)
-        ()
+        .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe(
           (loginResponse: LoginResponse) => {
             this.storageLoginService.loginResponse = loginResponse;

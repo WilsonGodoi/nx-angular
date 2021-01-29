@@ -23,6 +23,7 @@
     "ui-header": { "tags": [] },
     "data-access-login": { "tags": [] },
     "util-interface": { "tags": [] },
-    "data-storage-login": { "tags": [] }
+    "data-storage-login": { "tags": [] },
+    "util-class": { "tags": [] }
   }
 }

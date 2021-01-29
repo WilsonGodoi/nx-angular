@@ -20,7 +20,10 @@
       "@nx-angular/ui-header": ["libs/ui-header/src/index.ts"],
       "@nx-angular/data-access-login": ["libs/data-access-login/src/index.ts"],
       "@nx-angular/util-interface": ["libs/util-interface/src/index.ts"],
-      "@nx-angular/data-storage-login": ["libs/data-storage-login/src/index.ts"]
+      "@nx-angular/data-storage-login": [
+        "libs/data-storage-login/src/index.ts"
+      ],
+      "@nx-angular/util-class": ["libs/util-class/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

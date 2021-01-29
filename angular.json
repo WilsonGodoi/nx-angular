@@ -272,6 +272,31 @@
           }
         }
       }
+    },
+    "util-class": {
+      "projectType": "library",
+      "root": "libs/util-class",
+      "sourceRoot": "libs/util-class/src",
+      "prefix": "nx-angular",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/util-class/src/**/*.ts",
+              "libs/util-class/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/util-class"],
+          "options": {
+            "jestConfig": "libs/util-class/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

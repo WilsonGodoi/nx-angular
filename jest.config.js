@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/libs/data-access-login',
     '<rootDir>/libs/util-interface',
     '<rootDir>/libs/data-storage-login',
+    '<rootDir>/libs/util-class',
   ],
 };
