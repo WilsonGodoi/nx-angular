@@ -1,5 +1,7 @@
-<div class="app-header text-center">
-  <!-- *ngIf="authService.isAuthenticated() && router.url !== '/'" -->
+<div
+  class="app-header text-center"
+  *ngIf="storageLoginService.isAuthenticated() && router.url !== '/'"
+>
   <i style="float: left" class="fas fa-bars" (click)="openMenu()"></i>
   <span>
     {{ title }}

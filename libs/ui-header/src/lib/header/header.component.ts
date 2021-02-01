@@ -3,23 +3,27 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
 import { OverlayPanel } from 'primeng/overlaypanel';
-import { filter } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
+import { StorageLoginService } from '@nx-angular/data-storage-login';
+import { AlertService } from '@nx-angular/ui-alert';
+import { PathTypes } from '@nx-angular/util-enum';
+import { NgUnsubscribe } from '@nx-angular/util-class';
 
 @Component({
   selector: 'nx-angular-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent extends NgUnsubscribe implements OnInit {
   constructor(
-    // private alertService: AlertService,
+    private alertService: AlertService,
     // private logoutService: LogoutService,
     // public userService: UserService,
-    // public authService: AuthService,
+    public storageLoginService: StorageLoginService,
     public router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    // super();
+    super();
   }
 
   public items: Array<MenuItem>;
@@ -30,14 +34,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+      .pipe(
+        takeUntil(this.ngUnsubscribe),
+        filter((event) => event instanceof NavigationEnd)
+      )
       .subscribe(this.setTitle);
   }
 
   private setTitle = () => {
-    this.activatedRoute.firstChild.data.subscribe(
-      (data) => (this.title = data.title)
-    );
+    this.activatedRoute.firstChild.data
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((data) => (this.title = data.title));
   };
 
   public openMenu(): void {
@@ -57,11 +64,11 @@ export class HeaderComponent implements OnInit {
   }
 
   public doLogout(): void {
-    // this.alertService.confirm(
-    //   'Deseja encerrar a sessão?',
-    //   null,
-    //   this.logout.bind(this)
-    // );
+    this.alertService.confirm(
+      'Deseja encerrar a sessão?',
+      null,
+      this.logout.bind(this)
+    );
   }
 
   public goToChangePassword(): void {
@@ -73,8 +80,7 @@ export class HeaderComponent implements OnInit {
     // this.logoutService
     //   .doLogout()
     //   .pipe(
-    //     takeUntil(this.unsubscribe),
-    //     catchError(this.errorFunc.bind(this))
+    //     takeUntil(this.unsubscribe)
     //   )
     //   .subscribe(this.successFunc.bind(this));
   }
@@ -83,10 +89,6 @@ export class HeaderComponent implements OnInit {
     // this.userService.clear();
     // this.authService.clear();
     this.router.navigate(['']);
-  }
-
-  private errorFunc(error) {
-    // this.alertService.error(error.message);
   }
 
   public onUpload(event: any) {
@@ -142,7 +144,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Vendas',
         icon: 'far fa-money-bill-alt',
-        // routerLink: PathTypes.SALES,
+        routerLink: PathTypes.SALES,
         command: this.closeMenu.bind(this),
       },
     ];
