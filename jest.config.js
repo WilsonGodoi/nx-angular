@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/libs/data-storage-login',
     '<rootDir>/libs/util-class',
     '<rootDir>/libs/util-enum',
+    '<rootDir>/libs/ui-alert',
   ],
 };

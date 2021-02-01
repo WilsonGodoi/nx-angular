@@ -25,6 +25,7 @@
     "util-interface": { "tags": [] },
     "data-storage-login": { "tags": [] },
     "util-class": { "tags": [] },
-    "util-enum": { "tags": [] }
+    "util-enum": { "tags": [] },
+    "ui-alert": { "tags": [] }
   }
 }

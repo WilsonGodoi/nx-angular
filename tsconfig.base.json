@@ -24,7 +24,8 @@
         "libs/data-storage-login/src/index.ts"
       ],
       "@nx-angular/util-class": ["libs/util-class/src/index.ts"],
-      "@nx-angular/util-enum": ["libs/util-enum/src/index.ts"]
+      "@nx-angular/util-enum": ["libs/util-enum/src/index.ts"],
+      "@nx-angular/ui-alert": ["libs/ui-alert/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
