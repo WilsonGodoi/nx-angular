@@ -13,6 +13,7 @@ import { StorageLoginService } from '@nx-angular/data-storage-login';
 import { LoginResponse } from '@nx-angular/util-interface';
 import { takeUntil } from 'rxjs/operators';
 import { NgUnsubscribe } from '@nx-angular/util-class';
+import { PathTypes } from '@nx-angular/util-enum';
 
 @Component({
   selector: 'nx-angular-login',
@@ -50,9 +51,9 @@ export class LoginComponent extends NgUnsubscribe implements OnInit {
     this.state = 'default';
   }
 
-  public doLogin(e?: Event) {
+  public doLogin(e: Event) {
+    e.preventDefault();
     if (this.userform.valid) {
-      e.preventDefault();
       this.loading = true;
 
       this.loginService
@@ -64,11 +65,10 @@ export class LoginComponent extends NgUnsubscribe implements OnInit {
             // this.userService.getCurrent();
             this.rotate();
             setTimeout(() => {
-              // this.router.navigate([PathTypes.DASHBOARD]);
-              this.router.navigate(['dashboard']);
+              this.router.navigate([PathTypes.DASHBOARD]);
             }, 800);
           },
-          (error) => {
+          () => {
             this.loading = false;
           }
         );
